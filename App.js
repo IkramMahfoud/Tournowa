@@ -1,22 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import MatchesScreen from './src/screens/MatchesScreen';
+import NavPage from './routes/NavPage';
+ 
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import Colors from './styles/Colors';
+
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      {/* <MatchesScreen/> */}
-
-      <StatusBar style="auto" />
+    <View style={styles.body} testID="app-container">
+      <Provider store={store}>
+        <NavPage />
+      </Provider>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  body: {
+    flex: 1,
+    backgroundColor: "black",
+  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: Colors.background,
   },
 });
